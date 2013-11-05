@@ -1,0 +1,8 @@
+name: LilyRestarter
+main: me.shawshark.LilyRestarter.main
+version: 1.0
+softdepend: [LilyEssentials] 
+
+commands:
+  restartserver:
+  sendallplayers:
