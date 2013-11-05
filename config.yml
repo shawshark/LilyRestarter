@@ -1,0 +1,19 @@
+# The command each user will execute when the command /restartserver is executed.
+# You must have LilyPad-PortalCommand (Untill I start using the LilyPad API.)
+playercommand: server hub
+
+# If you don't want a message sent leave blank.
+# Leave this blank if you don't have LilyEssentials.
+# This message will be sent to all servers when the plugin enables.
+alertmessage: The creative server is now back online!
+
+# Name of the server that this config is in.
+servername: creative
+
+# If you don't want a message sent leave blank.
+# Leave this blank if you don't have LilyEssentials. 
+# This message will be sent to all servers when the plugin disables.
+shutdownalertmessage: The creative server has gone offline!
+
+# Message that broadcasts to the server right before it is shutdown
+broadcastmessage: The server is going offline please attempt to reconnect afterwards!
