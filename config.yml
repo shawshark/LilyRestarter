@@ -1,3 +1,4 @@
+
 # The command each user will execute when the command /restartserver is executed.
 # You must have LilyPad-PortalCommand (Untill I start using the LilyPad API.)
 playercommand: server hub
@@ -15,5 +16,8 @@ servername: creative
 # This message will be sent to all servers when the plugin disables.
 shutdownalertmessage: The creative server has gone offline!
 
-# Message that broadcasts to the server right before it is shutdown
-broadcastmessage: The server is going offline please attempt to reconnect afterwards!
+# Message that broadcasts to the server right before it is shutdown and players are sent.
+broadcastmessage: The server is going offline for a restart to reduce lag! Please attempt to reconnect afterwards!
+
+# Warning message to be sent that they are getting kicked to the hub server.
+beforerestartmessage: The server is restarting in 3 seconds! You will be redirected to the lobby!
