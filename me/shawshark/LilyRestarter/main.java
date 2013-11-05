@@ -61,7 +61,7 @@ public class main extends JavaPlugin implements Listener {
             public void run() {
           		
             	Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.RED + "LilyRestarter" + ChatColor.GRAY + "]"
-                    + ChatColor.GRAY + " All players were successfully set to the target server!");
+                    + ChatColor.GRAY + " All players were successfully sent to the target server!");
                 			
           					}	
           				}, 20L);
