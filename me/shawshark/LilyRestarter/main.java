@@ -19,7 +19,7 @@ public class main extends JavaPlugin implements Listener {
 				getServer().dispatchCommand(getServer().getConsoleSender(), 
 						"alert " + (getConfig().getString("alertmessage")));	
 			}	
-	    }, 100L);
+	    }, 200L);
 	  }
 	  
 	  public void onDisable()
@@ -35,16 +35,17 @@ public class main extends JavaPlugin implements Listener {
         Player p = (Player)sender;
         if (p.hasPermission("lilyrestarter.restart") || (p.hasPermission("lilyrestarter.admin"))) {
             if (cmd.getName().equalsIgnoreCase("restartserver")) {
-            	Bukkit.broadcastMessage(ChatColor.RED + (getConfig().getString("broadcastmessage")));
-	            getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
-	            	public void run() { 
-	            		main.this.getServer().shutdown(); 
+            	
+            	Bukkit.broadcastMessage(ChatColor.RED + (getConfig().getString("beforerestartmessage")));
+            	
+            	getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+	            	public void run() {
+	            		
+	            		Bukkit.broadcastMessage(ChatColor.RED + (getConfig().getString("broadcastmessage")));
+	            		shutdown(); // shuts the server down || Sends players to target server.
 	            	}
 	            }
-	            , 100L);
-	            	{ 
-	            		sendplayers(); 
-	            	}           
+	            , 60L);         
             }
             
             if (p.hasPermission("lilyrestarter.sendallplayers") || (p.hasPermission("lilyrestarter.admin"))) {
@@ -59,8 +60,9 @@ public class main extends JavaPlugin implements Listener {
           			
           	@Override
             public void run() {
-          		
+
             	Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.RED + "LilyRestarter" + ChatColor.GRAY + "]"
+            			
                     + ChatColor.GRAY + " All players were successfully sent to the target server!");
                 			
           					}	
@@ -77,10 +79,13 @@ public class main extends JavaPlugin implements Listener {
         	p.performCommand(getConfig().getString("playercommand"));
       }
       
-       public void debug() { /* Not being used at the moment */
-    	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
-    	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
-    	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
-      } 
+      public void shutdown() {
+    	  Bukkit.getServer().shutdown(); 
+       }
       
+      public void debug() { /* Not being used at the moment */
+    	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
+    	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
+    	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
+      }  
 }
