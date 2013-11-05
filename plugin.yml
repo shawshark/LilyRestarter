@@ -1,6 +1,6 @@
 name: LilyRestarter
 main: me.shawshark.LilyRestarter.main
-version: 1.2
+version: 1.3
 softdepend: [LilyEssentials] 
 
 commands:
