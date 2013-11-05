@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class main extends JavaPlugin implements Listener {
 
+	
 	public void onEnable()
 	  {
 		saveDefaultConfig(); 
@@ -21,16 +22,17 @@ public class main extends JavaPlugin implements Listener {
 			}	
 	    }, 200L);
 	  }
-	  
-	  public void onDisable()
-	  {
+	
+	public void onDisable() {
+		  
 		  saveDefaultConfig(); 
+		  sendplayers();
+		  
 		  getServer().dispatchCommand(getServer().getConsoleSender(), 
 				  "alert " + (getConfig().getString("shutdownalertmessage")));
-		  sendplayers();
-	  }
+		}
 	  
-	  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){ 
+	  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) { 
 	   {
         Player p = (Player)sender;
         if (p.hasPermission("lilyrestarter.restart") || (p.hasPermission("lilyrestarter.admin"))) {
@@ -42,7 +44,8 @@ public class main extends JavaPlugin implements Listener {
 	            	public void run() {
 	            		
 	            		Bukkit.broadcastMessage(ChatColor.RED + (getConfig().getString("broadcastmessage")));
-	            		shutdown(); // shuts the server down || Sends players to target server.
+	            		
+	            		shutdowndebug();	
 	            	}
 	            }
 	            , 60L);         
@@ -83,9 +86,19 @@ public class main extends JavaPlugin implements Listener {
     	  Bukkit.getServer().shutdown(); 
        }
       
+      public void shutdowndebug() 
+      
+      { getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+
+			@Override
+			public void run() 
+			{ shutdown(); }
+    	  			}, 20L);
+    	  }
+      
       public void debug() { /* Not being used at the moment */
     	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
     	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
     	  Bukkit.broadcastMessage(ChatColor.RED + "DEBUG MESSAGE!");
-      }  
+      }
 }
