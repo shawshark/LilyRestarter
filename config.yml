@@ -1,7 +1,5 @@
-
-# The command each user will execute when the command /restartserver is executed.
-# You must have LilyPad-PortalCommand (Untill I start using the LilyPad API.)
-playercommand: server hub
+# Server that the players get sent to when the server shuts down or a command is issued!
+redirectServer: hub
 
 # If you don't want a message sent leave blank.
 # Leave this blank if you don't have LilyEssentials.
